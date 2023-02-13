@@ -1,0 +1,109 @@
+\chapter{Практическая часть}
+\section{Задание 1}
+\begin{center}	
+	\centering
+	\def\svgwidth{12cm}
+	\input{src/task11.pdf_tex}
+	\captionof{figure}{Часть 1}
+	\label{ris:NRL1}
+\end{center}
+\begin{center}	
+	\centering
+	\def\svgwidth{14cm}
+	\input{src/task12.pdf_tex}
+	\captionof{figure}{Часть 2}
+	\label{ris:NRL2}
+\end{center}
+\section{Задание 2}
+\begin{center}
+	\begin{lstlisting}[label=b, caption={Выражение 1}]
+(CAR (CDR '(1 2 3 4 5 6))) 
+	\end{lstlisting}
+	\begin{lstlisting}[label=a, caption={Выражение 2}]
+(CAR (CDR (CDR '(1 2 3 4 5 6)))) 	
+\end{lstlisting}
+	\begin{lstlisting}[label=c, caption={Выражение 3}]
+(CAR (CDR (CDR (CDR '(1 2 3 4 5 6))))) 
+\end{lstlisting}
+\end{center}
+\section{Задание 3}
+\begin{center}
+	\begin{lstlisting}[label=b3, caption={Выражение 1}]
+(CAADR ' ((blue cube) (red pyramid)))  ;=red
+	\end{lstlisting}
+	\begin{lstlisting}[label=a3, caption={Выражение 2}]
+(CDAR '((abc) (def) (ghi))) ;=nil
+	\end{lstlisting}
+	\begin{lstlisting}[label=c3, caption={Выражение 3}]
+(CADR ' ((abc) (def) (ghi))) ;=def
+	\end{lstlisting}
+\begin{lstlisting}[label=d3, caption={Выражение 4}]
+(CADDR ' ((abc) (def) (ghi))) ;=ghi
+\end{lstlisting}
+\end{center}
+\section{Задание 4}
+\begin{center}
+	\begin{lstlisting}[label=b4, caption={Выражение 1}]
+(list 'Fred 'and 'Wilma)  ;(FRED AND WILMA)
+	\end{lstlisting}
+	\begin{lstlisting}[label=a4, caption={Выражение 2}]
+(list 'Fred '(and Wilma))  ;(FRED (AND WILMA))
+	\end{lstlisting}
+	\begin{lstlisting}[label=c4, caption={Выражение 3}]
+(cons Nil Nil) ;(NIL)
+	\end{lstlisting}
+	\begin{lstlisting}[label=d4, caption={Выражение 4}]
+(cons T Nil) ;(T)
+	\end{lstlisting}
+
+	\begin{lstlisting}[label=b42, caption={Выражение 5}]
+(cons Nil T) ;(NIL . T)
+	\end{lstlisting}
+	\begin{lstlisting}[label=a42, caption={Выражение 6}]
+(list Nil) ;(NIL)
+	\end{lstlisting}
+	\begin{lstlisting}[label=c42, caption={Выражение 7}]
+(cons ' (T) Nil) ;((T))
+	\end{lstlisting}
+	\begin{lstlisting}[label=d42, caption={Выражение 8}]
+(list ' (one two) ' (free temp)) ;((ONE TWO) (FREE TEMP))
+	\end{lstlisting}
+
+	\begin{lstlisting}[label=b43, caption={Выражение 9}]
+(cons 'Fred '(and Wilma)) ;(FRED AND WILMA)
+	\end{lstlisting}
+	\begin{lstlisting}[label=a43, caption={Выражение 10}]
+(cons 'Fred '(Wilma)) ;(FRED WILMA)
+	\end{lstlisting}
+	\begin{lstlisting}[label=c43, caption={Выражение 11}]
+(list Nil Nil) ;(NIL NIL)
+	\end{lstlisting}
+	\begin{lstlisting}[label=d43, caption={Выражение 12}]
+(list T Nil) ;(T NIL)
+	\end{lstlisting}
+
+	\begin{lstlisting}[label=b44, caption={Выражение 13}]
+(list Nil T) ;(NIL T)
+	\end{lstlisting}
+	\begin{lstlisting}[label=a44, caption={Выражение 14}]
+(cons T (list Nil)) ;(T NIL)
+	\end{lstlisting}
+	\begin{lstlisting}[label=c44, caption={Выражение 15}]
+(cons '(one two) '(free temp)) ;((ONE TWO) FREE TEMP)
+	\end{lstlisting}
+	\begin{lstlisting}[label=d44, caption={Выражение 16}]
+(list '(T) Nil) ;((T) NIL)
+	\end{lstlisting}
+\end{center}
+\section{Задание 5}
+\begin{center}
+	\begin{lstlisting}[label=b5, caption={Выражение 1}]
+(defun f (ar1 ar2 ar3 ar4) (list (list ar1 ar2) (list ar3 ar4)))
+	\end{lstlisting}
+	\begin{lstlisting}[label=a5, caption={Выражение 2}]
+(defun f (ar1 ar2) (list (list ar1) (list ar2)))
+	\end{lstlisting}
+	\begin{lstlisting}[label=c5, caption={Выражение 3}]
+(defun f (ar1) (list (list (list ar1))))
+	\end{lstlisting}
+\end{center}
