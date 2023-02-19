@@ -1,1 +1,183 @@
-cc
+\chapter{Теоретическая часть}
+\section{Базис языка}
+
+Базис состоит из:
+\begin{enumerate}
+	\item структуры, атомы;
+	\item встроенные (примитивные) функции (\texttt{atom}, \texttt{eq}, \texttt{cons}, \texttt{car}, \texttt{cdr});
+	\item специальные функции и функционалы, управляющие обработкой структур, представляющих вычислимые выражения (\texttt{quote}, \texttt{cond}, \texttt{lambda}, \texttt{label}, \texttt{eval}).
+\end{enumerate}
+
+\section{Классификация функций}
+
+Функции в \texttt{Lisp} классифицируют следующим образом:
+
+\begin{itemize}
+	\item чистые математические функции;
+	\item рекурсивные функции;
+	\item специальные функции --- формы (сегодня 2 аргумента, завтра - 5);
+	\item псевдофункции (создают эффект на внешнем устройстве);
+	\item функции с вариативными значениями, из которых выбирается 1;
+	\item функции высших порядков --- функционал: используется для синтаксического управления программ (абстракция языка).
+\end{itemize}
+
+По назначению функции разделяются следующим образом:
+
+\begin{itemize}
+	\item конструкторы --- создают значение (\texttt{cons}, например);
+	\item селекторы --- получают доступ по адресу (\texttt{car}, \texttt{cdr});
+	\item предикаты --- возвращают \texttt{Nil}, \texttt{T}.
+	\item функции сравнения -- такие как: \texttt{eq}, \texttt{eql}, \texttt{equal}, \texttt{equalp}.
+\end{itemize}
+
+\section{Способы создания функций}
+
+Функции в \texttt{Lisp} можно задавать следующими способами:
+
+\subsection*{\texttt{Lambda}-выражение}
+
+Синтаксис:
+
+\texttt{(lambda <$\lambda$-список> форма)}
+
+Пример:
+
+\begin{lstlisting} [
+	float=h!,
+	frame=single,
+	numbers=left,
+	abovecaptionskip=-5pt,
+	caption={Функция определенная Lambda-выражением},
+	label={cc:1},
+	language={Lisp},
+	]
+	(lambda (a b) (sqrt (+ (* a a) (* b b))))
+\end{lstlisting}
+
+\subsection*{Именованная функция}
+
+Синтаксис:
+
+\texttt{(defun <имя функции> <$\lambda$-выражение>)}
+
+Пример:
+
+\begin{lstlisting} [
+	float=h!,
+	frame=single,
+	numbers=left,
+	abovecaptionskip=-5pt,
+	caption={Пример определения именованной функции},
+	label={cc:2},
+	language={Lisp},
+	]
+	(defun hyp (a b) (sqrt (+ (* a a) (* b b))))
+\end{lstlisting}
+
+\section{Функции \texttt{car} и \texttt{cdr}}
+
+\texttt{car} --- функция получения первого элемента точечной пары.
+
+Примеры:
+
+\begin{table}[!ht]
+	\small
+	\begin{center}
+		\begin{tabular}{|c|c|c|}
+			\hline
+			\bfseries S-выражение & \bfseries Результат выполнения \texttt{car} \\\hline
+			(A . B) & A \\\hline
+			((A . B) . C) & (A . B) \\\hline
+			A & ошибка \\\hline
+		\end{tabular}
+	\end{center}
+\end{table}
+
+\texttt{cdr} --- функция получения второго элемента точечной пары.
+
+\begin{table}[!ht]
+	\small
+	\begin{center}
+		\begin{tabular}{|c|c|c|}
+			\hline
+			\bfseries S-выражение & \bfseries Результат выполнения \texttt{cdr} \\\hline
+			(A . B) & B \\ \hline
+			(A . (B . C)) & (B . C) \\\hline
+			A & ошибка \\\hline
+		\end{tabular}
+	\end{center}
+\end{table}
+
+\section{Функции \texttt{eq, eql, equal, equalp}}
+(eq x y) является истиной тогда и только тогда, когда, x и y являются идентичными объектами. (В реализациях, x и y обычно равны eq тогда и только тогда, когда обращаются к одной ячейке памяти.)
+
+Предикат eql истинен, если его аргументы равны eq, или если это числа одинакового типа и с одинаковыми значениями, или если это одинаковые буквы.
+
+Предикат equal истинен, если его аргументы это структурно похожие (изоморфные) объекты. Грубое правило такое, что два объекта равны equal тогда и только тогда, когда одинаково их выводимое представление. Числа и буквы сравниваются также как и в eql. Символы сравниваются как в eq. Объекты, которые содержат другие элементы, будут равны equal, если они принадлежат одному типу и содержащиеся элементы равны equal.  
+
+Два объекта равны equalp, если они равны equal, если они буквы и удовлетворяют предикату char-equal, который игнорирует регистр и другие атрибуты символов, если они числа и имеют одинаковое значение, даже если числа разных типов, если они включает в себя элементы, которые также равны equalp.
+\begin{lstlisting}[label=a80, caption={Примеры}]
+(eq 'a 'b) is false. 
+(eq 'a 'a) is true. 
+(eq 3 3) might be true or false, depending on the implementation. 
+(eq 3 3.0) is false. 
+(eq 3.0 3.0) might be true or false, depending on the implementation. 
+(eq #c(3 -4) #c(3 -4)) 
+might be true or false, depending on the implementation. 
+(eq #c(3 -4.0) #c(3 -4)) is false. 
+(eq (cons 'a 'b) (cons 'a 'c)) is false. 
+(eq (cons 'a 'b) (cons 'a 'b)) is false. 
+(eq '(a . b) '(a . b)) might be true or false. 
+(progn (setq x (cons 'a 'b)) (eq x x)) is true. 
+(progn (setq x '(a . b)) (eq x x)) is true. 
+(eq #\A #\A) might be true or false, depending on the implementation. 
+(eq "Foo" "Foo") might be true or false. 
+(eq "Foo" (copy-seq "Foo")) is false. 
+(eq "FOO" "foo") is false.
+
+
+(eql 'a 'b) is false. 
+(eql 'a 'a) is true. 
+(eql 3 3) is true. 
+(eql 3 3.0) is false. 
+(eql 3.0 3.0) is true. 
+(eql #c(3 -4) #c(3 -4)) is true. 
+(eql #c(3 -4.0) #c(3 -4)) is false. 
+(eql (cons 'a 'b) (cons 'a 'c)) is false. 
+(eql (cons 'a 'b) (cons 'a 'b)) is false. 
+(eql '(a . b) '(a . b)) might be true or false. 
+(progn (setq x (cons 'a 'b)) (eql x x)) is true. 
+(progn (setq x '(a . b)) (eql x x)) is true. 
+(eql #\A #\A) is true. 
+(eql "Foo" "Foo") might be true or false. 
+(eql "Foo" (copy-seq "Foo")) is false. 
+(eql "FOO" "foo") is false.
+
+
+(equal 'a 'b) is false. 
+(equal 'a 'a) is true. 
+(equal 3 3) is true. 
+(equal 3 3.0) is false. 
+(equal 3.0 3.0) is true. 
+(equal #c(3 -4) #c(3 -4)) is true. 
+(equal #c(3 -4.0) #c(3 -4)) is false. 
+(equal (cons 'a 'b) (cons 'a 'c)) is false. 
+(equal (cons 'a 'b) (cons 'a 'b)) is true. 
+(equal '(a . b) '(a . b)) is true. 
+(progn (setq x (cons 'a 'b)) (equal x x)) is true. 
+(progn (setq x '(a . b)) (equal x x)) is true. 
+(equal #\A #\A) is true. 
+(equal "Foo" "Foo") is true. 
+(equal "Foo" (copy-seq "Foo")) is true. 
+(equal "FOO" "foo") is false.
+\end{lstlisting}
+
+
+\section{Назначение и отличие \texttt{list} от \texttt{cons}}
+
+\texttt{cons} --- функция конструирования точечной пары, на вход получает 2 значения и делает из них точечную пару.
+
+\texttt{list} --- функция конструирования списка. На вход получает произвольное количество элементов и делает из них список.
+
+Вызовы \texttt{(list 1 2 3 4)} и \texttt{(cons 1 (cons 2 (cons 3 (cons 4 Nil))))} эквивалентны, то есть дают одинаковый результат.
+
