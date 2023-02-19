@@ -99,11 +99,14 @@
 \begin{center}
 	\begin{lstlisting}[label=b5, caption={Выражение 1}]
 (defun f (ar1 ar2 ar3 ar4) (list (list ar1 ar2) (list ar3 ar4)))
+ ((lambda (ar1 ar2 ar3 ar4) (list (list ar1 ar2) (list ar3 ar4))) 1 2 3 4)
 	\end{lstlisting}
 	\begin{lstlisting}[label=a5, caption={Выражение 2}]
 (defun f (ar1 ar2) (list (list ar1) (list ar2)))
+((lambda (ar1 ar2) (list (list ar1) (list ar2))) 1 2)
 	\end{lstlisting}
 	\begin{lstlisting}[label=c5, caption={Выражение 3}]
 (defun f (ar1) (list (list (list ar1))))
+((lambda (ar1) (list (list (list ar1)))) 1)
 	\end{lstlisting}
 \end{center}

@@ -1,0 +1,125 @@
+\chapter{Практическая часть}
+\section{Задание 1}
+\begin{center}	
+	\centering
+	\def\svgwidth{15cm}
+	\input{src/task1.pdf_tex}
+	\captionof{figure}{Часть 1}
+	\label{ris:NRL2}
+\end{center}
+\section{Задание 2}
+\begin{center}
+	\begin{lstlisting}[label=a, caption={Выражение 1}]
+(defun gip (a b) (sqrt (+ (* a a) (* b b))))
+	\end{lstlisting}
+\end{center}
+\begin{center}	
+	\centering
+	\def\svgwidth{13cm}
+	\input{src/task2.pdf_tex}
+	\captionof{figure}{ss}
+	\label{ris:NRL}
+\end{center}
+\section{Задание 3}
+\begin{center}
+	\begin{lstlisting}[label=a3, caption={Выражение 1}]
+(list 'a c) ;The variable C is unbound.; (list 'a 'c)
+\end{lstlisting}
+	\begin{lstlisting}[label=b3, caption={Выражение 2}]
+(cons 'a (b c)) ;The variable C is unbound.; (cons 'a '(b c))
+\end{lstlisting}
+	\begin{lstlisting}[label=c3, caption={Выражение 3}]
+(cons 'a '(b c))  ;(A B C)
+\end{lstlisting}
+	\begin{lstlisting}[label=d3, caption={Выражение 4}]
+(caddr (1 2 3 4 5)) ;Compile-time error: illegal function call; (caddr '(1 2 3 4 5))
+\end{lstlisting}
+	\begin{lstlisting}[label=e3, caption={Выражение 5}]
+(cons 'a 'b 'c) ;invalid number of arguments: 3; (cons '(a b) 'c) (cons 'a '(b c))  
+\end{lstlisting}
+	\begin{lstlisting}[label=f3, caption={Выражение 6}]
+(list 'a (b c)) ;The variable C is unbound.; (list 'a '(b c))
+\end{lstlisting}
+	\begin{lstlisting}[label=g3, caption={Выражение 7}]
+(list a '(b c)) ;The variable A is unbound.; (list 'a '(b c))
+\end{lstlisting}
+	\begin{lstlisting}[label=h3, caption={Выражение 8}]
+(list (+ 1 '(length '(1 2 3)))) ;  The value (LENGTH '(1 2 3)) is not of type NUMBER; (list (+ 1 (length '(1 2 3)))) 
+\end{lstlisting}
+\end{center}
+\section{Задание 4}
+\begin{center}
+	\begin{lstlisting}[label=a4, caption={Выражение 1}]
+ (defun what (l1 l2) (> (length l1) (length l2)))
+	\end{lstlisting}
+\end{center}
+
+\section{Задание 5}
+\begin{center}
+	\begin{lstlisting}[label=a5, caption={Выражение 1}]
+(cons 3 (list 5 6)) ;(3 5 6)
+	\end{lstlisting}
+	\begin{lstlisting}[label=b5, caption={Выражение 2}]
+(list 3 'from 9 'lives (- 9 3)) ;(3 FROM 9 LIVES 6)
+	\end{lstlisting}
+	\begin{lstlisting}[label=c5, caption={Выражение 3}]
+(+ (length for 2 too)) (car '(21 22 23))) ;The variable FOR is unbound.
+	\end{lstlisting}
+	\begin{lstlisting}[label=d5, caption={Выражение 4}]
+(cdr '(cons is short for ans))  ;(IS SHORT FOR ANS)
+	\end{lstlisting}
+	\begin{lstlisting}[label=e5, caption={Выражение 5}]
+(car (list one two)) ;The variable ONE is unbound.
+	\end{lstlisting}
+	\begin{lstlisting}[label=f5, caption={Выражение 6}]
+(cons 3 '(list 5 6)) ;(3 LIST 5 6)
+	\end{lstlisting}
+	\begin{lstlisting}[label=g5, caption={Выражение 7}]
+(car (list 'one 'two)) ;ONE
+	\end{lstlisting}
+\end{center}
+\section{Задание 6}
+\begin{center}
+	\begin{lstlisting}[label=a6, caption={Выражение 1}]
+	(mystery (one two)) ;The variable TWO is unbound.
+	\end{lstlisting}
+	\begin{lstlisting}[label=b6, caption={Выражение 2}]
+	(mystery (last one two)) ;The variable ONE is unbound.
+	\end{lstlisting}
+	\begin{lstlisting}[label=c6, caption={Выражение 3}]
+	(mystery free) ;The variable FREE is unbound.
+	\end{lstlisting}
+	\begin{lstlisting}[label=d6, caption={Выражение 4}]
+	(mystery one 'two)) ;The variable ONE is unbound.
+	\end{lstlisting}
+\end{center}
+\section{Задание 7}
+\begin{center}
+	\begin{lstlisting}[label=a7, caption={Выражение 1}]
+(defun f-to-c (temp) (* (/ 5 9) (- temp 32.0)))
+	\end{lstlisting}
+\end{center}
+\section{Задание 8}
+\begin{center}
+	\begin{lstlisting}[label=a8, caption={Выражение 1}]
+	(list 'cons t NIL) ;(CONS T NIL)
+	\end{lstlisting}
+	\begin{lstlisting}[label=b8, caption={Выражение 2}]
+	(eval (eval (list 'cons t NIL))) ;The function COMMON-LISP:T is undefined.
+	\end{lstlisting}
+	\begin{lstlisting}[label=c8, caption={Выражение 3}]
+	(apply #cons "(t NIL)) ;illegal complex number format: #CONS
+	\end{lstlisting}
+	\begin{lstlisting}[label=d8, caption={Выражение 4}]
+	(list 'eval NIL) ;(EVAL NIL)
+	\end{lstlisting}
+	\begin{lstlisting}[label=e8, caption={Выражение 5}]
+	(eval (list 'cons t NIL)) ;(T)
+	\end{lstlisting}
+	\begin{lstlisting}[label=f8, caption={Выражение 6}]
+	(eval NIL) ;NIL
+	\end{lstlisting}
+	\begin{lstlisting}[label=g8, caption={Выражение 7}]
+	(eval (list 'eval NIL)) ;NIL
+	\end{lstlisting}
+\end{center}

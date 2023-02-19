@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (MiKTeX 22.7) (preloaded format=xelatex 2022.10.2)  16 FEB 2023 14:28
+This is XeTeX, Version 3.141592653-2.6-0.999994 (MiKTeX 22.7) (preloaded format=xelatex 2022.10.2)  17 FEB 2023 13:27
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1776,7 +1776,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 32--36
 No file conclusion.tex.
 \openout2 = `teoretical_part.aux'.
 
-(teoretical_part.tex
+(teoretical_part.tex)
+\openout2 = `practical_part.aux'.
+
+ (practical_part.tex
 chapter 1.
 
 Class scrreprt Warning: \float@addtolists detected!
@@ -1804,62 +1807,22 @@ Class scrreprt Warning: Redefinition of \@makechapterhead detected.
 (scrreprt)              KOMA-Script and will not work with a coming version,
 (scrreprt)              that will remove this deprecated code.
 
-[3
+(src/task1.pdf_tex
+File: src//task1.pdf Graphic file (type pdf)
+<use src//task1.pdf, page 1>
+) [3
 
 
 
 
 
-]
-File: src/img1.png Graphic file (type bmp)
-<src/img1.png>
-File: src/img3.png Graphic file (type bmp)
-<src/img3.png>
-File: src/img2.png Graphic file (type bmp)
-<src/img2.png>
-File: src/img4.png Graphic file (type bmp)
-<src/img4.png>
- [4] [5]
-(C:\Users\kalas\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
-File: lstlang1.sty 2020/03/24 1.8d listings language file
-)
-(C:\Users\kalas\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang2.sty
-File: lstlang2.sty 2020/03/24 1.8d listings language file
-)
-[6]
-File: src/img3.png Graphic file (type bmp)
-<src/img3.png>
- [7]
-File: src/img2.png Graphic file (type bmp)
-<src/img2.png>
-) [8]
-\openout2 = `practical_part.aux'.
-
- (practical_part.tex
-chapter 2.
-
-Class scrreprt Warning: Redefinition of \@makechapterhead detected.
-(scrreprt)              Note: KOMA-Script does use styles for commands like
-(scrreprt)              \chapter. Currently it internally still provides and
-(scrreprt)              uses \@makechapterhead, but a completely different
-(scrreprt)              definition compared to the standard classes.
-(scrreprt)              So redefining or using internal \@makechapterhead
-(scrreprt)              by users or package authors may already break
-(scrreprt)              KOMA-Script and will not work with a coming version,
-(scrreprt)              that will remove this deprecated code.
-
-(src/task11.pdf_tex
-File: src//task11.pdf Graphic file (type pdf)
-<use src//task11.pdf, page 1>
-) (src/task12.pdf_tex
-File: src//task12.pdf Graphic file (type pdf)
-<use src//task12.pdf, page 1>
-) [9
 
 
 
-
-] [10] [11] [12]) [13]
+] (src/task2.pdf_tex
+File: src//task2.pdf Graphic file (type pdf)
+<use src//task2.pdf, page 1>
+) [4]) [5] [6]
 
 Package caption Warning: Unused \captionsetup[table] on input line 25.
 See the caption package documentation for explanation.
@@ -1871,12 +1834,12 @@ Package logreq Info: Writing requests to 'report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 44361 strings out of 410654
- 1087389 string characters out of 2816299
- 2243914 words of memory out of 3000000
- 64793 multiletter control sequences out of 15000+600000
- 470831 words of font info for 59 fonts, out of 8000000 for 9000
+ 43918 strings out of 410654
+ 1082236 string characters out of 2816299
+ 2316708 words of memory out of 3000000
+ 64361 multiletter control sequences out of 15000+600000
+ 470823 words of font info for 58 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 115i,8n,111p,10641b,3876s stack positions out of 10000i,1000n,20000p,200000b,80000s
+ 115i,7n,111p,10641b,3876s stack positions out of 10000i,1000n,20000p,200000b,80000s
 
-Output written on report.pdf (13 pages).
+Output written on report.pdf (6 pages).
