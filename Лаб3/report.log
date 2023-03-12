@@ -1,6 +1,6 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (MiKTeX 22.7) (preloaded format=xelatex 2022.10.8)  11 MAR 2023 12:24
+This is XeTeX, Version 3.141592653-2.6-0.999994 (MiKTeX 22.7) (preloaded format=xelatex 2022.10.2)  12 MAR 2023 23:14
 entering extended mode
- restricted \write18 enabled.
+ \write18 enabled.
  %&-line parsing enabled.
 **./report.tex
 (report.tex
@@ -1766,7 +1766,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 32--36
 
 
 
-]
+] [3]
 \openout2 = `conclusion.aux'.
 
 
@@ -1814,13 +1814,13 @@ U/TimesNewRoman(3)/m/n/14.4 quote\TU/TimesNewRoman(2)/m/n/14.4 , \TU/TimesNewRo
 man(3)/m/n/14.4 cond\TU/TimesNewRoman(2)/m/n/14.4 ,
  []
 
-[3
+[4
 
 
 
 
 
-]) [4]
+]) [5]
 \openout2 = `practical_part.aux'.
 
  (practical_part.tex
@@ -1836,12 +1836,12 @@ Class scrreprt Warning: Redefinition of \@makechapterhead detected.
 (scrreprt)              KOMA-Script and will not work with a coming version,
 (scrreprt)              that will remove this deprecated code.
 
-[5
+[6
 
 
 
 
-]) [6]
+] [7]) [8]
 
 Package caption Warning: Unused \captionsetup[table] on input line 25.
 See the caption package documentation for explanation.
@@ -1857,12 +1857,12 @@ Package logreq Info: Writing requests to 'report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 44057 strings out of 410654
- 1083721 string characters out of 2816299
- 2175628 words of memory out of 3000000
- 64505 multiletter control sequences out of 15000+600000
- 470847 words of font info for 61 fonts, out of 8000000 for 9000
+ 44082 strings out of 410654
+ 1084007 string characters out of 2816299
+ 2228701 words of memory out of 3000000
+ 64529 multiletter control sequences out of 15000+600000
+ 470855 words of font info for 62 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  115i,7n,111p,10641b,3876s stack positions out of 10000i,1000n,20000p,200000b,80000s
 
-Output written on report.pdf (6 pages).
+Output written on report.pdf (8 pages).
