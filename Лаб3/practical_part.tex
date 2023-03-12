@@ -1,0 +1,33 @@
+\chapter{Практическая часть}
+
+\section{Задание 1 Написать функцию, которая принимает целое число и возвращает первое
+	четное число, не меньшее аргумента.}
+\begin{center}
+	\begin{lstlisting}[label=a1, caption={Выражение 1}]
+(defun t1(x) (if(eq 0 (mod x 2)) x (+ x 1)))
+\end{lstlisting}
+\end{center}
+
+\section{Задание 2 Написать функцию, которая принимает число и возвращает число
+	того же знака, но с модулем на 1 больше модуля аргумента.}
+\begin{center}
+	\begin{lstlisting}[label=a2, caption={Выражение 2}]
+(defun t2(x) (if (> x 0) (+ x 1) (- x 1)))
+	\end{lstlisting}
+\end{center}
+
+\section{Задание 3 Написать функцию, которая принимает два числа и возвращает
+	список из этих чисел, расположенный по возрастанию.}
+\begin{center}
+	\begin{lstlisting}[label=a3, caption={Выражение 3}]
+(defun t3(x y) (if (< x y) (list x y ) (list y x)))
+	\end{lstlisting}
+\end{center}
+
+\section{Задание 4 Написать функцию, которая принимает три числа и возвращает Т только
+	тогда, когда первое число расположено между вторым и третьим.}
+\begin{center}
+	\begin{lstlisting}[label=a4, caption={Выражение 4}]
+(defun t4(x y z) (and (< y x) (< x z)))
+	\end{lstlisting}
+\end{center}
