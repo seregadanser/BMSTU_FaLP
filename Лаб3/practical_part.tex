@@ -1,0 +1,91 @@
+\chapter{Практическая часть}
+
+\section{Задание 1 Написать функцию, которая принимает целое число и возвращает первое
+	четное число, не меньшее аргумента.}
+\begin{center}
+	\begin{lstlisting}[label=a1, caption={Выражение 1}]
+(defun t1(x) (if(eq 0 (mod x 2)) x (+ x 1)))
+\end{lstlisting}
+\end{center}
+
+\section{Задание 2 Написать функцию, которая принимает число и возвращает число
+	того же знака, но с модулем на 1 больше модуля аргумента.}
+\begin{center}
+	\begin{lstlisting}[label=a2, caption={Выражение 2}]
+(defun t2(x) (if (> x 0) (+ x 1) (- x 1)))
+	\end{lstlisting}
+\end{center}
+
+\section{Задание 3 Написать функцию, которая принимает два числа и возвращает
+	список из этих чисел, расположенный по возрастанию.}
+\begin{center}
+	\begin{lstlisting}[label=a3, caption={Выражение 3}]
+(defun t3(x y) (if (< x y) (list x y ) (list y x)))
+	\end{lstlisting}
+\end{center}
+
+\section{Задание 4 Написать функцию, которая принимает три числа и возвращает Т только
+	тогда, когда первое число расположено между вторым и третьим.}
+\begin{center}
+	\begin{lstlisting}[label=a4, caption={Выражение 4}]
+(defun t4(x y z) (and (< y x) (< x z)))
+	\end{lstlisting}
+\end{center}
+
+\section{Задание 5 Каков результат вычисления следующих выражений?}
+\begin{center}
+	\begin{lstlisting}[label=a5, caption={Выражение 5}]
+(and 'fee 'fie 'foe) ; foe
+(or nil 'fie 'foe) ; fie
+(and (equal 'abc 'abc) 'yes) ; yes
+(or 'fee 'fie 'foe) ; fee
+(and nil 'fie 'foe) ; nil
+(or (equal 'abc 'abc) 'yes) ; T
+	\end{lstlisting}
+\end{center}
+
+\section{Задание 6  Написать предикат, который принимает два числа-аргумента и возвращает
+	Т, если первое число не меньше второго.}
+\begin{center}
+	\begin{lstlisting}[label=a6, caption={Выражение 6}]
+(defun t6(x y) (>= x y))
+	\end{lstlisting}
+\end{center}
+
+\section{Задание 7 Какой из следующих двух вариантов предиката ошибочен и почему?}
+\begin{center}
+	\begin{lstlisting}[label=a7, caption={Выражение 7}]
+(defun pred1 (x) (and (numberp x) (plusp x)))
+	\end{lstlisting}
+\begin{lstlisting}[label=a8, caption={Выражение 8}]
+(defun pred2 (x) (and (plusp x)(numberp x)))
+\end{lstlisting}
+\end{center}
+
+Ошибочным является предикат \ref{a8} из-за отсутствия проверки на число перед увеличением. 
+
+\section{Задание 8 Решить задачу 4, используя для ее решения конструкции:
+	только IF, только COND, только AND/OR.}
+\begin{center}
+	\begin{lstlisting}[label=a9, caption={Выражение 9}]
+(defun t8(x y z) (if (< y x) (if (< x z) T Nil) Nil))
+	\end{lstlisting}
+	\begin{lstlisting}[label=a10, caption={Выражение 10}]
+(defun t8(x y z) (cond ((< y x) (cond ((< x z) T) (T Nil))) (T Nil)))
+\end{lstlisting}
+\end{center}
+
+\section{Задание 9 Переписать функцию how-alike, приведенную в лекции и использующую COND, используя
+	только конструкции IF, AND/OR.}
+\begin{center}
+	\begin{lstlisting}[label=a11, caption={Выражение 11}]
+(defun how_alike_if (x y)
+(if (or (= x y) (equal x y))
+'the_same
+(if (and (oddp x) (oddp y))
+'both_odd
+(if (and (evenp x) (evenp y))
+'both_even
+'difference))))
+	\end{lstlisting}
+\end{center}
