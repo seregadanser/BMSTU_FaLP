@@ -1,0 +1,213 @@
+\chapter{Практическая часть}
+\section{Задание 1}
+Каковы результаты вычисления следующих выражений?
+\begin{center}	
+	\begin{lstlisting}[label=a, caption={Выражение 1}]
+		(cons lstl lst2) ; ((a b c) d e)
+		(list lst1 lst2) ; ((a b c) (d e))
+		(append lst1 lst2) ; (a b c d e)
+	\end{lstlisting}
+\end{center}
+
+\section{Задание 2}
+Каковы результаты вычисления следующих выражений?
+\begin{center}	
+	\begin{lstlisting}[label=b, caption={Выражение 2}]
+		(reverse '(a b c)) ; (c b a)
+		(reverse '(a b (c (d)))) ; ((c (d)) b a)
+		(reverse '(a)) ; (a)
+		(last '(a b c)) ; (c)
+		(last '(a)) ; (a)
+		(last '((a b c))) ;((a b c))
+		(reverse ()) ; Nil
+		(reverse '((a b c))) ; ((a b c))
+		(last '(a b (c))) ; ((c))
+		(last ()) ; Nil
+	\end{lstlisting}
+\end{center}
+
+\section{Задание 3}
+Написать, по крайней мере, два варианта функции, которая возвращает
+последний элемент своего списка-аргумента. 
+\begin{center}	
+	\begin{lstlisting}[label=c, caption={Выражение 3}]
+	(defun get_last (lst)
+		(car (last lst))
+	)
+	
+	(defun get_last (lst)
+		(if (cdr lst)
+		(get_last(cdr lst))
+		(car lst)
+		)
+	)
+	\end{lstlisting}
+\end{center}
+
+
+\section{Задание 4}
+Написать, по крайней мере, два варианта функции, которая возвращает
+свой список аргумент без последнего элемента. 
+\begin{center}	
+	\begin{lstlisting}[label=d, caption={Выражение 4}]
+	(defun without_last (lst)
+		(cond
+			((cdr lst) (cons (car lst) (without_last (cdr lst))))
+			(T Nil)
+		)
+	)
+	
+	(defun without_last (lst)
+		(reverse (cdr (reverse lst)))
+	)
+	
+	\end{lstlisting}
+\end{center}
+
+\section{Задание 5}
+Напишите функцию swap-first-last, которая переставляет в списке аргументе первый и последний элементы.
+\begin{center}	
+	\begin{lstlisting}[label=e, caption={Выражение 5}]
+	(defun swap-first-last (lst)
+		(append
+			(last lst)
+			(reverse (cdr (reverse (cdr lst))))
+			(cons (car lst) Nil)
+		)
+	)
+	\end{lstlisting}
+\end{center}
+
+\section{Задание 6}
+Написать простой вариант игры в кости, в котором бросаются две
+правильные кости. Если сумма выпавших очков равна 7 или 11 —
+выигрыш, если выпало (1,1) или (6,6) — игрок имеет право снова
+бросить кости, во всех остальных случаях ход переходит ко второму
+игроку, но запоминается сумма выпавших очков. Если второй игрок не
+выигрывает абсолютно, то выигрывает тот игрок, у которого больше
+очков. Результат игры и значения выпавших костей выводить на экран с
+помощью функции print.
+\begin{center}	
+	\begin{lstlisting}[label=f, caption={Выражение 6}]
+(defvar dices)
+(defvar roll1)
+(defvar roll2)
+
+
+(defun roll ()
+    (+ (random 7) (random 7))
+)
+
+(defun is_win (throw)
+    (cond
+        ((or (= throw 7) (= throw 11)) T)
+        (T Nil)
+    )
+)
+
+(defun is_luck (throw)
+    (cond
+        ((or (= throw 2) (= throw 12)) T)
+        (T Nil)
+    )
+)
+
+(defun turn ()
+    (terpri)
+    (setq dices (roll))
+    (princ "Rolled ")
+    (princ dices)
+
+    (cond
+        ((is_win dices) 0)
+        ((is_luck dices) (turn))
+        (T dices)
+    )
+)
+
+(defun game()
+    (princ "First player is rolling: ")
+    (setq roll1 (turn))
+    (terpri)
+
+    (cond
+        ((eq roll1 0) (princ "First player won absolutely!"))
+        (T ((lambda ()
+                (princ "Second player is rolling: ")
+                (setq roll2 (turn))
+                (terpri)
+                (cond
+                    ((eq roll2 0) (princ "Second player won absolutely"))
+                    ((eq roll1 roll2) (princ "Draw!"))
+                    ((> roll1 roll2) (princ "First player won!"))
+                    (T (princ "Second player won!"))
+                )
+
+        )))
+    )
+    (terpri)
+)
+	\end{lstlisting}
+\end{center}
+
+\section{Задание 7}
+Написать функцию, которая по своему списку-аргументу lst определяет
+является ли он палиндромом (то есть равны ли lst и (reverse lst)).
+\begin{center}	
+	\begin{lstlisting}[label=g, caption={Выражение 7}]
+	(defun is_palindrom (lst)
+		(equalp lst (reverse lst))
+	)
+	\end{lstlisting}
+\end{center}
+
+\section{Задание 8}
+Напишите свои необходимые функции, которые обрабатывают таблицу из
+4-х точечных пар:
+(страна . столица), и возвращают по стране - столицу, а по столице —
+страну
+\begin{center}	
+	\begin{lstlisting}[label=h, caption={Выражение 8}]
+(defun show_on_map (lst item)
+    (cond
+        ((equal (caar lst) item) (cdar lst))
+        ((equal (cdar lst) item) (caar lst))
+        ((cdr lst) (show_on_map (cdr lst) item))
+    )
+)
+	\end{lstlisting}
+\end{center}
+
+\section{Задание 9}
+Напишите функцию, которая умножает на заданное число-аргумент
+первый числовой элемент списка из заданного 3-х элементного спискааргумента, когда
+a) все элементы списка --- числа,
+6) элементы списка -- любые объекты.
+\begin{center}	
+	\begin{lstlisting}[label=i, caption={Выражение 9}]
+		(defun mul_if_all_num (lst num)
+		(cond
+			((and
+				(numberp num)
+				(and
+					(numberp (car lst))
+					(and
+						(numberp (cadr lst))
+						(numberp (caddr lst))
+					)
+				)
+			) (* (car lst) num))
+			(T Nil)
+		)
+	)
+	
+	(defun mul_first_num (lst num)
+		(cond
+			((and (numberp (car lst)) (numberp num)) (* (car lst) num)))
+			((cdr lst) (mul_first_num (cdr lst) num))
+			(T Nil)
+		)
+	)
+	\end{lstlisting}
+\end{center}
+
